@@ -19,21 +19,29 @@ export function VantaCellsBackground({ children, className = '' }: VantaCellsBac
   }, [])
 
   useEffect(() => {
-    if (!mounted || !vantaRef.current) return
-
-    let VANTA: any
-    let THREE: any
+    if (!mounted || !vantaRef.current || typeof window === 'undefined') return
 
     const initVanta = async () => {
       try {
-        // Dynamically import Vanta and Three.js to avoid SSR issues
-        THREE = await import('three')
-        VANTA = await import('vanta/dist/vanta.cells.min.js')
+        // Load scripts dynamically to avoid build issues
+        if (!window.THREE) {
+          const script = document.createElement('script')
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js'
+          document.head.appendChild(script)
+          await new Promise(resolve => script.onload = resolve)
+        }
+
+        if (!window.VANTA) {
+          const script = document.createElement('script')
+          script.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.cells.min.js'
+          document.head.appendChild(script)
+          await new Promise(resolve => script.onload = resolve)
+        }
         
-        if (vantaRef.current && !vantaEffect) {
-          const effect = VANTA.default({
+        if (vantaRef.current && window.VANTA && !vantaEffect) {
+          const effect = window.VANTA.CELLS({
             el: vantaRef.current,
-            THREE: THREE,
+            THREE: window.THREE,
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
@@ -58,21 +66,29 @@ export function VantaCellsBackground({ children, className = '' }: VantaCellsBac
 
     return () => {
       if (vantaEffect) {
-        vantaEffect.destroy()
+        try {
+          vantaEffect.destroy()
+        } catch (error) {
+          console.warn('Error destroying Vanta effect:', error)
+        }
         setVantaEffect(null)
       }
     }
-  }, [mounted, theme])
+  }, [mounted, theme, vantaEffect])
 
   // Update colors when theme changes
   useEffect(() => {
     if (vantaEffect && mounted) {
-      vantaEffect.setOptions({
-        color1: theme === 'dark' ? 0x1a365d : 0x00A68C,
-        color2: theme === 'dark' ? 0x2d5a87 : 0x00BFB3,
-      })
+      try {
+        vantaEffect.setOptions({
+          color1: theme === 'dark' ? 0x1a365d : 0x00A68C,
+          color2: theme === 'dark' ? 0x2d5a87 : 0x00BFB3,
+        })
+      } catch (error) {
+        console.warn('Error updating Vanta colors:', error)
+      }
     }
-  }, [theme, vantaEffect, mounted])
+  }, [theme, mounted, vantaEffect])
 
   if (!mounted) {
     return (
@@ -98,4 +114,12 @@ export function VantaCellsBackground({ children, className = '' }: VantaCellsBac
       </div>
     </div>
   )
+}
+
+// Extend Window interface for TypeScript
+declare global {
+  interface Window {
+    THREE: any;
+    VANTA: any;
+  }
 }
