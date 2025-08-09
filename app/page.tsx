@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { ArrowRight, Play, ExternalLink } from 'lucide-react'
 import { getFeaturedProjects } from '@/lib/projects'
 import { MailingListSignup } from '@/components/mailing-list-signup'
+import { VantaCellsBackground } from '@/components/vanta-cells-background'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -28,8 +29,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sand/20 via-sky/10 to-wave/20 dark:from-charcoal/40 dark:via-palm/10 dark:to-wave/20" />
+      <VantaCellsBackground className="relative py-20 lg:py-32 overflow-hidden">
         <div className="container-max section-padding relative">
           <motion.div
             initial="initial"
@@ -41,14 +41,14 @@ export default function HomePage() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-6"
             >
-              <span className="gradient-text">Disability does not equal disadvantage</span>
+              <span className="text-white drop-shadow-lg">Disability does not equal disadvantage</span>
               <br />
-              <span className="text-foreground">– I build, film, and fly to prove it.</span>
+              <span className="text-white/90 drop-shadow-lg">– I build, film, and fly to prove it.</span>
             </motion.h1>
             
             <motion.p
               variants={fadeInUp}
-              className="text-xl lg:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
+              className="text-xl lg:text-2xl text-white/80 mb-12 max-w-3xl mx-auto drop-shadow-md"
             >
               Technology, storytelling, and creativity that break barriers.
             </motion.p>
@@ -57,7 +57,7 @@ export default function HomePage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link href="/projects" className="btn-primary inline-flex items-center">
+              <Link href="/projects" className="btn-primary inline-flex items-center shadow-lg">
                 Explore My Work
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -65,7 +65,7 @@ export default function HomePage() {
                 href="https://twitch.tv/owenpkent" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary inline-flex items-center"
+                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-palm font-medium px-6 py-3 rounded-2xl transition-all duration-300 hover:scale-105 inline-flex items-center shadow-lg"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Live
@@ -73,7 +73,7 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </VantaCellsBackground>
 
       {/* About Teaser Section */}
       <section className="py-20 bg-muted/30">
