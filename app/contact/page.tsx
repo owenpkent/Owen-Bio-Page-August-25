@@ -171,7 +171,7 @@ export default function ContactPage() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-heading font-bold mb-6">Let's Collaborate</h2>
+                <h2 className="text-2xl font-heading font-bold mb-6">Let&apos;s Collaborate</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
                     <strong className="text-foreground">Project Inquiries:</strong> Whether you need assistive technology solutions, aerial cinematography, or want to discuss film projects that authentically represent disability.
