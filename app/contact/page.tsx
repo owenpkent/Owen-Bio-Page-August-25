@@ -88,7 +88,7 @@ export default function ContactPage() {
               >
                 {/* Hidden fields for Netlify */}
                 <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
+                <input type="hidden" name="bot-field" style={{ display: 'none' }} />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="relative">
