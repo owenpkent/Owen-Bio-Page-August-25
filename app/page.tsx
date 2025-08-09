@@ -30,7 +30,10 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <VantaCellsBackground className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="container-max section-padding relative">
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30 dark:bg-black/20 z-[1]" />
+        
+        <div className="container-max section-padding relative z-[2]">
           <motion.div
             initial="initial"
             animate="animate"
@@ -41,14 +44,18 @@ export default function HomePage() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold mb-6"
             >
-              <span className="text-white drop-shadow-lg">Disability does not equal disadvantage</span>
+              <span className="text-white drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_80%)]">
+                Disability does not equal disadvantage
+              </span>
               <br />
-              <span className="text-white/90 drop-shadow-lg">– I build, film, and fly to prove it.</span>
+              <span className="text-white/95 drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_80%)]">
+                – I build, film, and fly to prove it.
+              </span>
             </motion.h1>
             
             <motion.p
               variants={fadeInUp}
-              className="text-xl lg:text-2xl text-white/80 mb-12 max-w-3xl mx-auto drop-shadow-md"
+              className="text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl mx-auto drop-shadow-xl [text-shadow:_1px_1px_3px_rgb(0_0_0_/_70%)]"
             >
               Technology, storytelling, and creativity that break barriers.
             </motion.p>
@@ -57,7 +64,7 @@ export default function HomePage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link href="/projects" className="btn-primary inline-flex items-center shadow-lg">
+              <Link href="/projects" className="btn-primary inline-flex items-center shadow-2xl hover:shadow-3xl transition-shadow">
                 Explore My Work
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -65,7 +72,7 @@ export default function HomePage() {
                 href="https://twitch.tv/owenpkent" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-palm font-medium px-6 py-3 rounded-2xl transition-all duration-300 hover:scale-105 inline-flex items-center shadow-lg"
+                className="bg-white/15 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white hover:text-palm font-medium px-6 py-3 rounded-2xl transition-all duration-300 hover:scale-105 inline-flex items-center shadow-2xl hover:shadow-3xl"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Live
