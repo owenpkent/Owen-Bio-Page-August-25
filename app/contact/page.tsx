@@ -23,25 +23,26 @@ export default function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Create form data for Netlify Forms
-    const form = new FormData()
-    form.append('form-name', 'contact')
-    Object.entries(formData).forEach(([key, value]) => {
-      form.append(key, value)
-    })
-
     try {
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(form as any).toString()
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData
+        }).toString()
       })
       
-      // Redirect to thank you page
-      window.location.href = '/thanks'
+      if (response.ok) {
+        // Redirect to thank you page
+        window.location.href = '/thanks'
+      } else {
+        throw new Error('Form submission failed')
+      }
     } catch (error) {
       console.error('Form submission error:', error)
       setIsSubmitting(false)
+      alert('There was an error submitting the form. Please try again.')
     }
   }
 
@@ -80,15 +81,8 @@ export default function ContactPage() {
             >
               <form
                 onSubmit={handleSubmit}
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
                 className="space-y-6"
               >
-                {/* Hidden fields for Netlify */}
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" style={{ display: 'none' }} />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="relative">
