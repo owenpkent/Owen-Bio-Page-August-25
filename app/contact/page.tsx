@@ -67,7 +67,7 @@ export default function ContactPage() {
               <span className="gradient-text">Get In Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a project idea, collaboration opportunity, or just want to connect? I'd love to hear from you.
+              Have a project idea, collaboration opportunity, or just want to connect? I&apos;d love to hear from you.
             </p>
           </div>
 

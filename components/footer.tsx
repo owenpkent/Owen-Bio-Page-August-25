@@ -28,7 +28,7 @@ export function Footer() {
             >
               <h3 className="text-xl font-heading font-semibold mb-4">About Owen</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I'm Owen P Kent – filmmaker, engineer, entrepreneur, and advocate – building projects that prove disability does not equal disadvantage. Through ATDev, I create mobility solutions for true independence. With OKStudio, I tell stories that shift perspectives through film, livestreaming, and aerial cinematography. My YouTube and Twitch channels connect communities through art, technology, and authentic conversation.
+                I&apos;m Owen P Kent – filmmaker, engineer, entrepreneur, and advocate – building projects that prove disability does not equal disadvantage. Through ATDev, I create mobility solutions for true independence. With OKStudio, I tell stories that shift perspectives through film, livestreaming, and aerial cinematography. My YouTube and Twitch channels connect communities through art, technology, and authentic conversation.
               </p>
               
               {/* Social Links */}

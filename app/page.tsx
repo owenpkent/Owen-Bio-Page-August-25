@@ -89,7 +89,7 @@ export default function HomePage() {
                 Meet Owen P Kent
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                I'm a filmmaker, engineer, entrepreneur, and advocate building projects that prove disability does not equal disadvantage. Through innovation, storytelling, and community building, I create tools and content that shift perspectives and break barriers.
+                I&apos;m a filmmaker, engineer, entrepreneur, and advocate building projects that prove disability does not equal disadvantage. Through innovation, storytelling, and community building, I create tools and content that shift perspectives and break barriers.
               </p>
               <Link href="/contact" className="btn-primary inline-flex items-center">
                 Get In Touch

@@ -29,7 +29,7 @@ export default function ThanksPage() {
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8">
-            Your message has been received. I'll get back to you within 24-48 hours.
+            Your message has been received. I&apos;ll get back to you within 24-48 hours.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
